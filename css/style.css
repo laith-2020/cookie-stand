@@ -9,6 +9,7 @@ body {
 }
 #salamon {
     position: relative;
+    height: 4556px;
 	width: 980px;
     margin: 75px auto 0 auto;
 	background: #FFFFFF;
@@ -32,13 +33,13 @@ body {
     display: block;
 }
 
-#salamon p {
+#paragraph1 {
     padding: 20px 40px 20px 40px;
     font-family: Georgia, 'Times New Roman', Times, serif ;
     color: chocolate;
     
 }
-#salamon h2 {
+#head2 {
     padding: 20px 40px 20px 40px;
         font-family: Arial, Helvetica, sans-serif;
         color:blueviolet;
@@ -46,8 +47,11 @@ body {
 
 #secondul {
     background-color: cadetblue;
-    padding: 20px 40px 20px 40px;
-    color:green;
+    padding: 45px ;
+    line-height: 40px;
+    margin: 30px;
+    color:red;
+    padding-bottom: 50px;
 }
 
 #header {
@@ -124,4 +128,59 @@ body {
 }
 .menu-item:hover {
     background-color: #FF0055;
+}
+
+#footer {
+	margin: 280px;
+	text-align: center;
+	color: #8C8B8B;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+
+#space {
+    padding-bottom: 60px;
+}
+
+
+
+.location1 {
+    padding-left: 30px;
+}
+
+#paragraphlocation {
+    color: saddlebrown;
+    padding: 20px 60px ;
+
+}
+
+#paragraphHours {
+    color: saddlebrown;
+    padding: 20px 60px ;
+    width: 500px;
+
+}
+
+#contactinfo {
+    float: left;
+}
+.contactTag {
+    padding-left: 20px;
+}
+
+.phone {
+    padding-left: 30px;
+}
+
+#hoursOpen {
+    float: right;
+}
+
+.hourstitle {
+    padding: 40px 80px;
+    margin-left: 180px;
+}
+#paragraphPhone {
+    color: saddlebrown;
+    padding-left: 23px;
+
 }
