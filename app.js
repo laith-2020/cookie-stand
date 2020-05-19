@@ -5,11 +5,9 @@ function getRandomNum(min, max) {
 }
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-var cookiePerHour = [];
 var cusPerHour = [];
 var Sales = [];
 var cities = [];
-var tot = [];
 
 function City(cityName, MinCus, MaxCus, AvgCookie) {
     this.cityName = cityName;
@@ -17,6 +15,7 @@ function City(cityName, MinCus, MaxCus, AvgCookie) {
     this.MaxCus = MaxCus;
     this.AvgCookie = AvgCookie;
     this.total = 0;
+    this.cookiePerHour= [];
     cities.push(this);
 }
 City.prototype.GetCusPerHour = function () {
@@ -29,9 +28,9 @@ City.prototype.GetCusPerHour = function () {
 City.prototype.getCookiePerHour = function () {
     // var total = 0;
     for (var i = 0; i < hours.length; i++) {
-        cookiePerHour[i] = Math.ceil(cusPerHour[i] * this.AvgCookie);
-        this.total = this.total + cookiePerHour[i];
-        Sales[i] = hours[i] + " : " + cookiePerHour[i];
+        this.cookiePerHour[i] = Math.ceil(cusPerHour[i] * this.AvgCookie);
+        this.total = this.total + this.cookiePerHour[i];
+        Sales[i] = hours[i] + " : " + this.cookiePerHour[i];
     }
     Sales[14] = this.total;
 }
@@ -49,7 +48,7 @@ City.prototype.render = function () {
     for (var i = 0; i < hours.length; i++) {
         var tableHours = document.createElement('td');
         tableEl.appendChild(tableHours);
-        tableHours.textContent = cookiePerHour[i];
+        tableHours.textContent = this.cookiePerHour[i];
     }
 
     var tableData2 = document.createElement('td');
@@ -58,7 +57,26 @@ City.prototype.render = function () {
 
 }
 
-var headertag = function () {
+var Seattle = new City('seattle', 23, 65, 6.3);
+var tokyo = new City('tokyo', 3, 24, 1.2);
+var dubai = new City('dubai', 11, 38, 3.7);
+var paris = new City('paris', 20, 38, 2.5);
+var lima = new City('lima', 2, 16, 4.6);
+
+console.log(cities);
+console.log(tokyo);
+
+
+function calling() {
+    for (var i = 0; i < cities.length; i++) {
+        cities[i].GetCusPerHour();
+        cities[i].getCookiePerHour();
+        cities[i].render();
+    }
+}
+
+
+  function headertag() {
     var container = document.getElementById('results');
     var tableEl = document.createElement('table');
     container.appendChild(tableEl);
@@ -82,37 +100,35 @@ var headertag = function () {
 
 }
 
-headertag();
 
+function tablefooter() {
+    var container = document.getElementById('tableOne');
+    var footRow = document.createElement('tr');
+    container.appendChild(footRow);
+    // tablefooter.textContent= 'helo;
 
-// var tablefooter = function () {
-//     var footRow = document.createElement('tr');
-//     tableEl.appendChild(footRow);
-//     // tablefooter.textContent= 'helo;
+    var tableData77 = document.createElement('td');
+    footRow.appendChild(tableData77);
+    tableData77.textContent = "total";
 
-//     for (var i = 0; i < hours.length; i++) {
+    var TotalTotal = 0;
+    for (var i = 0; i < hours.length; i++) {
+        var htotal = 0;
+        for (var j = 0; j < cities.length; j++) {
+            htotal = htotal + cities[j].cookiePerHour[i];
+            TotalTotal = TotalTotal + cities[j].cookiePerHour[i];
+        }
+        var tableData99 = document.createElement('td');
+        footRow.appendChild(tableData99);
+        tableData99.textContent = htotal;
+    }
+    var tableData100 = document.createElement('td');
+    footRow.appendChild(tableData100);
+    tableData100.textContent = TotalTotal;
 
-//         for (var j = 0; j < cities.length; j++) {
-//             var colum = hours[j] + cities[0]
-
-//         }
-//     }
-    
-// }
-// console.log(tablefooter);
-// tablefooter();
-
-var Seattle = new City('seattle', 23, 65, 6.3);
-var tokyo = new City('tokyo', 3, 24, 1.2);
-var dubai = new City('dubai', 11, 38, 3.7);
-var paris = new City('paris', 20, 38, 2.5);
-var lima = new City('lima', 2, 16, 4.6);
-
-console.log(cities);
-console.log(tokyo);
-
-for (var i = 0; i < cities.length; i++) {
-    cities[i].GetCusPerHour();
-    cities[i].getCookiePerHour();
-    cities[i].render();
 }
+console.log(cities);
+
+headertag();
+calling();
+tablefooter();
