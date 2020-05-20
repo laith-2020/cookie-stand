@@ -107,5 +107,18 @@ background-color:  salmon;
 }
 
 #results {
-	padding: 120px 90px;
+	padding: 20px 90px;
+
+}
+
+#salesForm {
+	padding-top: 0px;
+	padding-left: 90px;
+	padding-right: 160px;
+}
+#headerSalesList{
+	text-align: center;
+}
+#addCityDesign{
+	text-align: center;
 }
