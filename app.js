@@ -8,14 +8,14 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '
 var cusPerHour = [];
 var Sales = [];
 var cities = [];
-
+// Creat a 
 function City(cityName, MinCus, MaxCus, AvgCookie) {
     this.cityName = cityName;
     this.MinCus = MinCus;
     this.MaxCus = MaxCus;
     this.AvgCookie = AvgCookie;
     this.total = 0;
-    this.cookiePerHour= [];
+    this.cookiePerHour = [];
     cities.push(this);
 }
 City.prototype.GetCusPerHour = function () {
@@ -23,10 +23,8 @@ City.prototype.GetCusPerHour = function () {
         var perday = Math.floor(Math.random() * (this.MaxCus - this.MinCus + 1)) + this.MinCus;
         cusPerHour[i] = Math.floor(perday);
     }
-    // console.log('perday', perday);
 }
 City.prototype.getCookiePerHour = function () {
-    // var total = 0;
     for (var i = 0; i < hours.length; i++) {
         this.cookiePerHour[i] = Math.ceil(cusPerHour[i] * this.AvgCookie);
         this.total = this.total + this.cookiePerHour[i];
@@ -63,9 +61,6 @@ var dubai = new City('dubai', 11, 38, 3.7);
 var paris = new City('paris', 20, 38, 2.5);
 var lima = new City('lima', 2, 16, 4.6);
 
-console.log(cities);
-console.log(tokyo);
-
 
 function calling() {
     for (var i = 0; i < cities.length; i++) {
@@ -75,8 +70,7 @@ function calling() {
     }
 }
 
-
-  function headertag() {
+function headertag() {
     var container = document.getElementById('results');
     var tableEl = document.createElement('table');
     container.appendChild(tableEl);
@@ -105,7 +99,6 @@ function tablefooter() {
     var container = document.getElementById('tableOne');
     var footRow = document.createElement('tr');
     container.appendChild(footRow);
-    // tablefooter.textContent= 'helo;
 
     var tableData77 = document.createElement('td');
     footRow.appendChild(tableData77);
@@ -127,8 +120,33 @@ function tablefooter() {
     tableData100.textContent = TotalTotal;
 
 }
-console.log(cities);
+
+function deleteLastRow() {
+    document.getElementById('tableOne').deleteRow(length - 1);
+}
+
+
+var salesForm = document.getElementById('salesForm')
+
+salesForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var cityNameValue = event.target.cityName1.value;
+    var MinCusValue = parseInt(event.target.MinCus1.value);
+    var MaxCusValue = parseInt(event.target.MaxCus1.value);
+    var AvgCookieValue = parseFloat(event.target.AvgCookie1.value);
+
+    var newCity = new City(cityNameValue, MinCusValue, MaxCusValue, AvgCookieValue);
+
+    newCity.GetCusPerHour();
+    newCity.getCookiePerHour();
+    deleteLastRow();
+    newCity.render();
+    tablefooter();
+
+});
 
 headertag();
 calling();
 tablefooter();
+
+
