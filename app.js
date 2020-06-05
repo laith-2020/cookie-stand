@@ -8,7 +8,6 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '
 var cusPerHour = [];
 var Sales = [];
 var cities = [];
-// Creat a 
 function City(cityName, MinCus, MaxCus, AvgCookie) {
     this.cityName = cityName;
     this.MinCus = MinCus;
@@ -125,7 +124,6 @@ function deleteLastRow() {
     document.getElementById('tableOne').deleteRow(length - 1);
 }
 
-
 var salesForm = document.getElementById('salesForm')
 
 salesForm.addEventListener('submit', function (event) {
@@ -142,11 +140,13 @@ salesForm.addEventListener('submit', function (event) {
     deleteLastRow();
     newCity.render();
     tablefooter();
-
 });
-
 headertag();
 calling();
 tablefooter();
 
+
+var sumObj = [ {a:10,b:9}];
+sumObj.push(20);
+console.log(sumObj);
 
