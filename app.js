@@ -5,7 +5,6 @@ function getRandomNum(min, max) {
 }
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-var cusPerHour = [];
 var Sales = [];
 var cities = [];
 
@@ -16,6 +15,7 @@ function City(cityName, MinCus, MaxCus, AvgCookie) {
     this.AvgCookie = AvgCookie;
     this.total = 0;
     this.cookiePerHour = [];
+    this.cusPerHour =[];
     cities.push(this);
 }
 City.prototype.GetCusPerHour = function () {
@@ -25,7 +25,7 @@ City.prototype.GetCusPerHour = function () {
 }
 City.prototype.getCookiePerHour = function () {
     for (var i = 0; i < hours.length; i++) {
-        this.cookiePerHour[i] = Math.ceil(cusPerHour[i] * this.AvgCookie);
+        this.cookiePerHour[i] = Math.ceil(this.cusPerHour[i] * this.AvgCookie);
         this.total = this.total + this.cookiePerHour[i];
         Sales[i] = hours[i] + " : " + this.cookiePerHour[i];
     }
@@ -144,9 +144,4 @@ salesForm.addEventListener('submit', function (event) {
 headertag();
 calling();
 tablefooter();
-
-
-var sumObj = [ {a:10,b:9}];
-sumObj.push(20);
-console.log(sumObj);
 
