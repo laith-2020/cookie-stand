@@ -8,6 +8,7 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '
 var cusPerHour = [];
 var Sales = [];
 var cities = [];
+
 function City(cityName, MinCus, MaxCus, AvgCookie) {
     this.cityName = cityName;
     this.MinCus = MinCus;
@@ -19,8 +20,7 @@ function City(cityName, MinCus, MaxCus, AvgCookie) {
 }
 City.prototype.GetCusPerHour = function () {
     for (var i = 0; i < hours.length; i++) {
-        var perday = Math.floor(Math.random() * (this.MaxCus - this.MinCus + 1)) + this.MinCus;
-        cusPerHour[i] = Math.floor(perday);
+    this.cusPerHour[i]= getRandomNum(this.MinCus , this.MaxCus);
     }
 }
 City.prototype.getCookiePerHour = function () {
